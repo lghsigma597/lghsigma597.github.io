@@ -151,6 +151,9 @@
       [data-lang="en"] .name [lang="en"],
       [data-lang="ko"] .name [lang="ko"] { font-size: 2.25rem; }
       .facts, .entry, .skills { grid-template-columns: 1fr; }
+      /* Single column: the date row sits between two roles, so it carries the line too. */
+      .timeline .entry { row-gap: 0; }
+      .timeline .when { padding: 0 0 0.25rem 1.5rem; border-left: 1px solid var(--line); }
       .facts { gap: 1.75rem; }
       .skills dd + dt { margin-top: 0.5rem; }
     }
