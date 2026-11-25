@@ -28,7 +28,8 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap"></noscript>
   <style>
     :root {
       color-scheme: light dark;
@@ -128,8 +129,11 @@
     .where, .tags { color: var(--muted); }
     .entry ul { margin: 0.5rem 0 0; padding-left: 1.1rem; }
 
-    /* Experience runs newest first; the line joins the roles and the filled dot marks the current one. */
-    .timeline .entry > div { position: relative; padding-left: 1.5rem; border-left: 1px solid var(--line); }
+    /* Experience runs newest first; the line joins the roles and the filled dot marks the current one.
+       The gap between roles is padding inside the bordered div so the line stays unbroken. */
+    .timeline .entry { padding-bottom: 0; }
+    .timeline .entry > div { position: relative; padding: 0 0 1.75rem 1.5rem; border-left: 1px solid var(--line); }
+    .timeline .entry:last-child > div { padding-bottom: 0; }
     .timeline .entry > div::before {
       content: ""; position: absolute; left: -0.3rem; top: 0.45rem;
       width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--bg); border: 1px solid var(--muted);
@@ -151,6 +155,7 @@
       .skills dd + dt { margin-top: 0.5rem; }
     }
     @media print {
+      :root, :root[data-theme] { color-scheme: light; }
       .bar, .skip { display: none; }
       section { break-inside: avoid; }
     }
